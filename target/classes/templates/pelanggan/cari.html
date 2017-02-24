@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div th:fragment="content">
+            <h1>Cari Pelanggan</h1>
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>KODE</th>
+                        <th>NAMA LENGKAP</th>
+                        <th>ALAMAT</th>
+                        <th>PHONE</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="s : ${cariPelanggan}">
+                        <td th:text="${s.kode}"></td>
+                        <td th:text="${s.namaLengkap}"></td>
+                        <td th:text="${s.alamat}"></td>
+                        <td th:text="${s.phone}"></td>                        
+                        <td>
+                            <a href="edit.html" th:href="@{/pelanggan/form(kode=${s.kode})}">
+                                edit
+                            </a> | 
+                            <a href="view.html" th:href="@{/pelanggan/hapus(kode=${s.kode})}">
+                                hapus
+                            </a> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

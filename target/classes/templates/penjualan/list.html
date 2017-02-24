@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div th:fragment="content">
+            <h1>Daftar TransaksiPejualan Di PT. Duta Perkakas</h1>
+            <form class="form-search pull-left" action="#" th:action="@{/penjualan/cari}" method="get">
+                <div class="input-append">
+                    <input type="text" id="cariId" name="noNota" class="search-query input-xxlarge" placeholder="No Nota" />
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+            <br/>
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>No Nota</th>
+                        <th>No Nota Terakhir</th>
+                        <th>Nama Pelanggan</th>
+                        <th>Tanggal Transaksi</th>
+                        <th>Nama Barang</th>
+                        <th>Harga Barang</th>
+                        <th>Jumlah</th>
+                        <th>Total</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="s : ${daftarTransaksiPenjualan}">
+                        <td th:text="${s.noNota}"></td>
+                        <td th:text="${s.noNotaTerakhir}"></td>
+                        <td th:text="${s.pelanggan.namaLengkap}"></td>
+                        <td th:text="${s.tanggal}"></td>
+                        <td th:text="${s.barang.nama}"></td>
+                        <td th:text="${s.barang.hargajual}"></td>
+                        <td th:text="${s.jumlah}"></td>
+                        <td th:text="${s.total}"></td>
+                        <td>
+                            <a href="edit.html" th:href="@{/penjualan/edit(noNota=${s.noNota})}">
+                                edit
+                            </a> |
+                            <a href="view.html" th:href="@{/penjualan/hapus(noNota=${s.noNota})}">
+                                hapus
+                            </a> | 
+                            <a href="#" th:href="@{/penjualan/kwitansi(noNota=${s.noNota})}">
+                                cetak
+                            </a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

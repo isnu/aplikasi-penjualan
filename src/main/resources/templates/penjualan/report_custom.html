@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div th:fragment="content">
+            <h1 style="text-align: center;font-weight: bold">Cari Data Transaksi Penjualan Berdasarkan Tanggal</h1>
+            <form class="form-horizontal" action="#" th:action="@{/penjualan/custom_report}" method="get">
+                <div class="form-group">
+                    <label for="cariMulai" class="col-sm-1 control-label">Tanggal Mulai</label>
+                    <div class="col-sm-1">
+                        <input type="date" id="cariMulai" name="mulai" class="search-query input-xxlarge" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cariSelesai" class="col-sm-1 control-label">Tanggal Selesai</label>
+                    <div class="col-sm-1">
+                        <input type="date" id="cariTahun" name="selesai" class="search-query input-xxlarge" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </body>
+</html>

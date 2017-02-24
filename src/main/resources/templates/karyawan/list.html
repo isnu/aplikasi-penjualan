@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div th:fragment="content">
+            <h1>Daftar Karyawan Di PT. Duta Perkakas</h1>
+            <form class="form-search pull-left" action="#" th:action="@{/karyawan/cari}" method="get">
+                <div class="input-append">
+                    <input type="text" id="cariId" name="nik" class="search-query input-xxlarge" placeholder="NIK Karyawan" />
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+            <br/>
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>NIK</th>
+                        <th>NAMA</th>
+                        <th>JABATAN</th>
+                        <th>EMAIL</th>
+                        <th>PHONE</th>
+                        <th>TANGGAL LAHIR</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="s : ${daftarKaryawan}">
+                        <td th:text="${s.nik}"></td>
+                        <td th:text="${s.nama}"></td>
+                        <td th:text="${s.jabatan}"></td>
+                        <td th:text="${s.email}"></td>
+                        <td th:text="${s.phone}"></td>
+                        <td th:text="${s.tanggalLahir}"></td>
+                        <td>
+                            <a href="edit.html" th:href="@{/karyawan/edit(nik=${s.nik})}">
+                                edit
+                            </a> |
+                            <a href="view.html" th:href="@{/karyawan/hapus(nik=${s.nik})}">
+                                hapus
+                            </a> | 
+                            <a href="cari.html" th:href="@{/karyawan/cari(nik=${s.nik})}">
+                                lihat
+                            </a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

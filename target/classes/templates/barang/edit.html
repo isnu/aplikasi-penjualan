@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Tambah Barang</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div th:fragment="content">
+            <h1>Update Data Barang</h1>
+            <form class="form-horizontal" action="#" th:action="@{/barang/edit}" th:object="${barang}" method="post">
+                <input type="hidden" th:field="*{kode}" />
+                <div class="form-group">
+                    <label for="disabledInput" class="col-sm-2 control-label">KODE</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="disabledInput" disabled="disabled" th:field="*{kode}" />
+                    </div>
+                    <p th:if="${#fields.hasErrors('kode')}" th:errors="*{kode}">Pesan Error</p>
+                </div>
+                <div class="form-group">
+                    <label for="inputNama" class="col-sm-2 control-label">Nama</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="inputNama" th:field="*{nama}" />
+                    </div>
+                    <p th:if="${#fields.hasErrors('nama')}" th:errors="*{nama}">Pesan Error</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputhargabeli" class="col-sm-2 control-label">HargaBeli</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="inputHargaJual" th:field="*{hargabeli}" />
+                    </div>
+                    <p th:if="${#fields.hasErrors('hargabeli')}" th:errors="*{hargabeli}">Pesan Error</p>
+                </div>
+                <div class="form-group">
+                    <label for="inputhargajual" class="col-sm-2 control-label">HargaJual</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="inputHargaJual" th:field="*{hargajual}" />
+                    </div>
+                    <p th:if="${#fields.hasErrors('hargajual')}" th:errors="*{hargajual}">Pesan Error</p>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-5">
+                        <button type="submit" class="btn btn-default">SAVE</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
